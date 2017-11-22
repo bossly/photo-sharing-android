@@ -89,10 +89,10 @@ class MainActivity : AppCompatActivity() {
     private fun uploadImage(success: Boolean, data: Intent?) {
         if (success) {
             val userId = FirebaseAuth.getInstance().uid as String
-            val timestamp = SimpleDateFormat("yyyy-MM/dd-HH:mm:ss.SSS", Locale.UK).format(Date())
+            val timestamp = SimpleDateFormat("yyyy-MM/dd-HHmmssSSS", Locale.UK).format(Date())
             val bitmap = data?.extras?.get("data") as Bitmap
             val storage = FirebaseStorage.getInstance().reference
-            val ref = storage.child("uploads/$userId/$timestamp.jpg")
+            val ref = storage.child("uploads/$timestamp.jpg")
             val baos = ByteArrayOutputStream()
 
             bitmap.compress(Bitmap.CompressFormat.JPEG, 95, baos)
@@ -157,7 +157,9 @@ class MainActivity : AppCompatActivity() {
                 .setQuery(query, Story::class.java)
                 .build()
 
-        list.adapter = StoryAdapter(presenter)
+        val adapter = StoryAdapter(presenter)
+        list.adapter = adapter
+        adapter.startListening()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
