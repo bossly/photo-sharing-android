@@ -42,12 +42,15 @@ dependencies {
     implementation "com.google.firebase:firebase-core:$firebase_version"
     implementation "com.google.firebase:firebase-auth:$firebase_version"
     implementation "com.google.firebase:firebase-config:$firebase_version"
+    implementation "com.google.firebase:firebase-database:$firebase_version"
     implementation "com.google.firebase:firebase-firestore:$firebase_version"
 
     // firebase UI
     implementation "com.firebaseui:firebase-ui-auth:$firebase_ui_version"
     implementation "com.firebaseui:firebase-ui-storage:$firebase_ui_version"
     implementation "com.firebaseui:firebase-ui-firestore:$firebase_ui_version"
+
+    compile 'com.chootdev:timezago:1.1.7'
 
     implementation 'com.github.bumptech.glide:glide:4.1.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.1.1'

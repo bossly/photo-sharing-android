@@ -1,15 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="5dp">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp">
 
     <ImageView
         android:id="@+id/image"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="photo"
         android:scaleType="centerCrop"
-        app:srcCompat="@mipmap/ic_launcher_round" />
+        app:srcCompat="@drawable/ic_launcher_background" />
+
+    <Button
+        android:id="@+id/like"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@null"
+        android:drawablePadding="0dp"
+        android:drawableStart="@drawable/ic_like"
+        android:padding="0dp"
+        android:textColor="@color/cardview_light_background"
+        app:layout_constraintBottom_toBottomOf="@+id/image"
+        app:layout_constraintStart_toStartOf="@+id/image"
+        tools:text="0" />
+
+    <TextView
+        android:id="@+id/timestamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:padding="8dp"
+        android:shadowColor="@color/cardview_dark_background"
+        android:textColor="@color/cardview_light_background"
+        app:layout_constraintBaseline_toBaselineOf="@id/like"
+        app:layout_constraintBottom_toBottomOf="@+id/image"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="0d" />
 
 </android.support.constraint.ConstraintLayout>

@@ -9,6 +9,7 @@ import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -108,7 +109,10 @@ class MainActivity : AppCompatActivity() {
                 story.timestamp = Date(System.currentTimeMillis())
                 story.image = ref.path
 
-                FirebaseFirestore.getInstance().collection("feed").add(story)
+                FirebaseFirestore.getInstance().collection("feed").add(story).addOnSuccessListener { snapshot ->
+                    // update key uid
+                    snapshot.update("uid", snapshot.id)
+                }
             }
 
             Snackbar.make(list, "New Story created", Snackbar.LENGTH_SHORT).show()
@@ -135,8 +139,9 @@ class MainActivity : AppCompatActivity() {
         startActivityForResult(intent, REQUEST_AUTH_CODE)
     }
 
-    private fun authCompleted(success: Boolean) {
+    private fun authCompleted(success: Boolean, data: Intent?) {
         if (success) {
+            Log.d("tag", data.toString())
             displayData()
         } else {
             // show message
@@ -166,7 +171,7 @@ class MainActivity : AppCompatActivity() {
         val result = resultCode == Activity.RESULT_OK
 
         when (requestCode) {
-            REQUEST_AUTH_CODE -> authCompleted(result)
+            REQUEST_AUTH_CODE -> authCompleted(result, data)
             REQUEST_IMAGE_CAPTURE -> uploadImage(result, data)
         }
     }
