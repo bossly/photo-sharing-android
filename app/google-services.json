@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "898591159071",
+    "firebase_url": "https://photosharing-dfab9.firebaseio.com",
+    "project_id": "photosharing-dfab9",
+    "storage_bucket": "photosharing-dfab9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:898591159071:android:d65db1065bc744a6",
+        "android_client_info": {
+          "package_name": "me.a01eg.photosharing"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "898591159071-h7bsmaqvndp0fdqdno1p4dorgfk0g2o4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "me.a01eg.photosharing",
+            "certificate_hash": "5b5f517dfb382e2160e092749de7dc09fe92bf8c"
+          }
+        },
+        {
+          "client_id": "898591159071-khabv18p1q2iv7civ55qpafq8se7nug6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLFs1qtbS8jyyfoApCJF14qULrUzOOS64"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "898591159071-khabv18p1q2iv7civ55qpafq8se7nug6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
