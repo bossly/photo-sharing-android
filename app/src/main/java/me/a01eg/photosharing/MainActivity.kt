@@ -156,7 +156,7 @@ class MainActivity : AppCompatActivity() {
         val query = FirebaseFirestore.getInstance()
                 .collection("feed")
                 .orderBy("timestamp", Query.Direction.DESCENDING) // newest goes first
-                .limit(50)
+                .limit(50) // show only first 50 items
 
         val presenter = FirestoreRecyclerOptions.Builder<Story>()
                 .setQuery(query, Story::class.java)
