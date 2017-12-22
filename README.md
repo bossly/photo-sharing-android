@@ -3,7 +3,7 @@
 # PhotoSharing
 This is an app written on Kotlin and using Firebase as backend.
 
-
+![demo](wiki/demo.gif)
 
 ## Quick start
 
@@ -14,3 +14,6 @@ To start your own project
 3. Clone the project and put the file  ***google-services.json*** inside ***/app*** folder, side by side to your *proguard-rules.pro*
 4. Open the project using latest [AndroidStudio 3.0](https://developer.android.com/studio/index.html)
 5. Press **Run** 
+
+
+
