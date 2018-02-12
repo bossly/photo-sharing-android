@@ -15,5 +15,7 @@ To start your own project
 4. Open the project using latest [AndroidStudio 3.0](https://developer.android.com/studio/index.html)
 5. Press **Run** 
 
+# Application Starter
 
+If you looking for iOS and Android(Java) version of this template, check out it on [Codecanyon - iOS|https://codecanyon.net/item/photovideo-social-application-with-firebase-admob-pushnotifications/17931454?ref=01eg_me], [Codecanyon - Android|https://codecanyon.net/item/instagram-template-with-firebase-admob-pushnotifications/20022803?ref=01eg_me]
 
