@@ -17,5 +17,7 @@ To start your own project
 
 # Application Starter
 
-If you looking for iOS and Android(Java) version of this template, check out it on [Codecanyon - iOS|https://codecanyon.net/item/photovideo-social-application-with-firebase-admob-pushnotifications/17931454?ref=01eg_me], [Codecanyon - Android|https://codecanyon.net/item/instagram-template-with-firebase-admob-pushnotifications/20022803?ref=01eg_me]
+If you looking for starters, also could be found here:
 
+- [iOS version](https://codecanyon.net/item/photovideo-social-application-with-firebase-admob-pushnotifications/17931454?ref=01eg_me)
+- [Android Java](https://codecanyon.net/item/instagram-template-with-firebase-admob-pushnotifications/20022803?ref=01eg_me)
