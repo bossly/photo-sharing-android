@@ -1,7 +1,6 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
+apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
 
@@ -9,6 +8,10 @@ ext {
     firebase_version = "11.4.2" // should be 11.6.+ for firebase.performance
     firebase_ui_version = "3.1.0"
     support_library_version = "26.1.0"
+}
+
+kapt {
+    generateStubs = true
 }
 
 android {
@@ -50,11 +53,11 @@ dependencies {
     implementation "com.firebaseui:firebase-ui-storage:$firebase_ui_version"
     implementation "com.firebaseui:firebase-ui-firestore:$firebase_ui_version"
 
-    compile 'com.chootdev:timezago:1.1.7'
-    compile 'com.wonderkiln:camerakit:0.13.1'
+    implementation 'com.chootdev:timezago:1.1.7'
+    implementation 'com.wonderkiln:camerakit:0.13.1'
 
     implementation 'com.github.bumptech.glide:glide:4.1.1'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.1.1'
+    kapt 'com.github.bumptech.glide:compiler:4.1.1'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'

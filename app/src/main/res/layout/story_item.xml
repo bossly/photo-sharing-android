@@ -13,7 +13,7 @@
         android:adjustViewBounds="true"
         android:contentDescription="photo"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        app:srcCompat="@mipmap/ic_launcher" />
 
     <Button
         android:id="@+id/like"
