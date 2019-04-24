@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity() {
         config.setDefaults(R.xml.config_defaults)
         config.fetch().addOnCompleteListener { task ->
             if (task.isSuccessful) {
-                config.activateFetched()
+                config.activate()
             }
         }
 
@@ -124,13 +124,12 @@ class MainActivity : AppCompatActivity() {
     private fun openLoginScreen() {
 
         //: uncomment providers if you wanna use it
-        val providers = mutableListOf(
-//            AuthUI.IdpConfig.Builder(AuthUI.FACEBOOK_PROVIDER).build(),
-//            AuthUI.IdpConfig.Builder(AuthUI.TWITTER_PROVIDER).build(),
-//            AuthUI.IdpConfig.Builder(AuthUI.PHONE_VERIFICATION_PROVIDER).build(),
-                AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build(),
-                AuthUI.IdpConfig.Builder(AuthUI.EMAIL_PROVIDER).build()
-        )
+        val providers = arrayListOf(
+                AuthUI.IdpConfig.EmailBuilder().build(),
+//                AuthUI.IdpConfig.PhoneBuilder().build(),
+//                AuthUI.IdpConfig.TwitterBuilder().build(),
+//                AuthUI.IdpConfig.FacebookBuilder().build(),
+                AuthUI.IdpConfig.GoogleBuilder().build())
 
         val intent = AuthUI.getInstance()
                 .createSignInIntentBuilder()

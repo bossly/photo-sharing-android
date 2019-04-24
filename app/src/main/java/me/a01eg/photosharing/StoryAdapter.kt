@@ -36,7 +36,7 @@ class StoryHolder(itemView: View) : RecyclerView.ViewHolder(itemView), ValueEven
     private var likeSnapshot: DataSnapshot? = null // latest state of like
 
     private fun likeReference(): DatabaseReference?
-            = likesRef?.child(FirebaseAuth.getInstance().uid)
+            = likesRef?.child(FirebaseAuth.getInstance().uid!!)
 
     fun bind(model: Story?) {
         val storyId = model?.uid
@@ -48,7 +48,7 @@ class StoryHolder(itemView: View) : RecyclerView.ViewHolder(itemView), ValueEven
         itemView.like.setOnClickListener(this)
 
         // load image
-        Glide.with(itemView?.context).load(ref).into(itemView?.image)
+        Glide.with(itemView.context).load(ref).into(itemView.image)
 
         // listen to likes changes in real-time
         if (likesRef == null || storyId.equals(likesRef?.ref?.key)) {
@@ -77,37 +77,37 @@ class StoryHolder(itemView: View) : RecyclerView.ViewHolder(itemView), ValueEven
 
     // ValueEventListener
 
-    override fun onDataChange(snapshot: DataSnapshot?) = when {
-    // cache latest version of like status
-        FirebaseAuth.getInstance().uid.equals(snapshot?.key) -> {
+    override fun onDataChange(snapshot: DataSnapshot) {
+        // cache latest version of like status
+        if (FirebaseAuth.getInstance().uid.equals(snapshot.key)) {
             likeSnapshot = snapshot
             itemView.like.isSelected = likeSnapshot?.getValue(Boolean::class.java) ?: false
         }
-    //
-        snapshot?.exists() == true ->
+        //
+        if (snapshot.exists()) {
             this.itemView.like.text = snapshot.childrenCount.toString()
-    // there no likes at all, just hide the number
-        else -> {
+            // there no likes at all, just hide the number
+        } else {
             this.itemView.like.text = null
             itemView.like.isSelected = false
         }
     }
 
-    override fun onCancelled(error: DatabaseError?) {
+    override fun onCancelled(snapshot: DatabaseError) {
         this.itemView.like.text = null
     }
+
 }
 
 //: Controller - connect view with model
 class StoryAdapter(options: FirestoreRecyclerOptions<Story>) : FirestoreRecyclerAdapter<Story, StoryHolder>(options) {
-
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): StoryHolder {
-        val layoutInflater = LayoutInflater.from(parent?.context)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StoryHolder {
+        val layoutInflater = LayoutInflater.from(parent.context)
         return StoryHolder(layoutInflater.inflate(R.layout.story_item, parent, false))
     }
 
-    override fun onBindViewHolder(holder: StoryHolder?, position: Int, model: Story?) {
-        holder?.bind(model)
+    override fun onBindViewHolder(holder: StoryHolder, position: Int, model: Story) {
+        holder.bind(model)
     }
 }
 
