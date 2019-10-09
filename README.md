@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/bossly/photo-sharing-android.svg?branch=master)](https://travis-ci.org/bossly/photo-sharing-android)
-
 Download here: [![Build status](https://build.appcenter.ms/v0.1/apps/11423cac-e7e5-4cf9-9f37-1ab13be03e74/branches/master/badge)](https://install.appcenter.ms/users/oleg-baidalka-vc0r/apps/photoshare/distribution_groups/github%20testers)
 
 <a href="https://www.buymeacoffee.com/01eg" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
