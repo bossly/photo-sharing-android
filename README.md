@@ -12,11 +12,17 @@ This is an app written on Kotlin and using Firebase as backend.
 
 To start your own project
 
-1. Opening [FirebaseConsole](https://console.firebase.google.com) and creating new project and download the **google-services.json** (we will need it later).
+1. Open [FirebaseConsole](https://console.firebase.google.com) and create new project for android with downloading the **google-services.json** (we will need it later).
 2. Before you start, go to [FirebaseConsole](https://console.firebase.google.com) and activate **Email** and **Google** authorisation on **Auth** tab, also **Database Firestore** and **Storage** should be activated too.
 3. Clone the project and put the file  ***google-services.json*** inside ***/app*** folder, side by side to your *proguard-rules.pro*
-4. Open the project using latest [AndroidStudio 3.0](https://developer.android.com/studio/index.html)
-5. Press **Run** 
+4. Open the project using latest [AndroidStudio 3.0](https://developer.android.com/studio/index.html) and open the project folder
+5. When Android Studio finished indexing project press **Run** to start the app
+
+## What next?
+
+1. [Add Admob banner](https://developers.google.com/admob/android/banner)
+2. [Publish to GooglePlay](https://developer.android.com/studio/publish)
+3. [Create landing page](https://falcon9.web.app/)
 
 # Application Starter
 

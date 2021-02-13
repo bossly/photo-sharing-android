@@ -21,7 +21,7 @@ import java.util.*
  * Copyright by 01eg.me
  */
 
-//: Model - contains only information
+//: Model - contains only information we need
 class Story {
     var uid: String? = null
     var user: String? = null
