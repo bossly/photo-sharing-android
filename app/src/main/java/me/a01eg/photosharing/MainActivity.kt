@@ -5,16 +5,16 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
-import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.DefaultItemAnimator
-import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
@@ -68,9 +68,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun loadConfigs(): FirebaseRemoteConfig? {
+    private fun loadConfigs(): FirebaseRemoteConfig {
         val config = FirebaseRemoteConfig.getInstance()
-        config.setDefaults(R.xml.config_defaults)
+        config.setDefaultsAsync(R.xml.config_defaults)
         config.fetch().addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 config.activate()
