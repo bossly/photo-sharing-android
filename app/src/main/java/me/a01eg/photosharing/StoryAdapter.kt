@@ -12,22 +12,14 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.story_item.view.*
-import java.util.*
+import me.a01eg.photosharing.model.Story
 
 /**
- * Model to display photo
+ * Adapter to render photo items
  *
  * Created on 22/11/2017.
  * Copyright by 01eg.me
  */
-
-//: Model - contains only information we need
-class Story {
-    var uid: String? = null
-    var user: String? = null
-    var image: String? = null
-    var timestamp: Date? = null
-}
 
 //: View - render data from model and listen for user action
 class StoryHolder(itemView: View) : RecyclerView.ViewHolder(itemView), ValueEventListener, View.OnClickListener {

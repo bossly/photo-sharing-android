@@ -23,6 +23,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageMetadata
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
+import me.a01eg.photosharing.model.Story
 import java.io.ByteArrayOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
@@ -96,7 +97,7 @@ class MainActivity : AppCompatActivity() {
             val ref = storage.child("uploads/$timestamp.jpg")
             val baos = ByteArrayOutputStream()
 
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 95, baos)
+            bitmap.compress(Bitmap.CompressFormat.JPEG, IMAGE_COMPRESSION, baos)
             val bytes = baos.toByteArray()
 
             val metadata = StorageMetadata.Builder()
@@ -104,20 +105,21 @@ class MainActivity : AppCompatActivity() {
                     .build()
 
             ref.putBytes(bytes, metadata).addOnSuccessListener {
-                val story = Story()
-                story.user = userId
-                story.timestamp = Date(System.currentTimeMillis())
-                story.image = ref.path
+                val story = Story(
+                        user = userId,
+                        timestamp = Date(System.currentTimeMillis()),
+                        image = ref.path
+                )
 
-                FirebaseFirestore.getInstance().collection("feed").add(story).addOnSuccessListener { snapshot ->
+                FirebaseFirestore.getInstance().collection(COLLECTION_FEED).add(story).addOnSuccessListener { snapshot ->
                     // update key uid
                     snapshot.update("uid", snapshot.id)
                 }
             }
 
-            Snackbar.make(list, "New Story created", Snackbar.LENGTH_SHORT).show()
+            Snackbar.make(list, R.string.message_story_created, Snackbar.LENGTH_SHORT).show()
         } else {
-            // cancelled
+            Log.d(Companion.TAG, "Image upload cancelled")
         }
     }
 
@@ -140,7 +142,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun authCompleted(success: Boolean, data: Intent?) {
         if (success) {
-            Log.d("tag", data.toString())
+            Log.d(TAG, data.toString())
             displayData()
         } else {
             // show message
@@ -153,7 +155,7 @@ class MainActivity : AppCompatActivity() {
     private fun displayData() {
         // request for stories
         val query = FirebaseFirestore.getInstance()
-                .collection("feed")
+                .collection(COLLECTION_FEED)
                 .orderBy("timestamp", Query.Direction.DESCENDING) // newest goes first
                 .limit(50) // show only first 50 items
 
@@ -197,5 +199,11 @@ class MainActivity : AppCompatActivity() {
         // open new screen
         openLoginScreen()
         return true
+    }
+
+    companion object {
+        const val TAG = "MainActivity"
+        const val COLLECTION_FEED = "feed"
+        const val IMAGE_COMPRESSION = 95
     }
 }
